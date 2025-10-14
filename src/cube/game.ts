@@ -23,7 +23,7 @@ export function initGameLogic(
 ) {
   const player = createPlayer(scene);
   createEnvironment(scene);
-  const startScreen = createStartScreen(container);
+  const startScreen = createStartScreen(container, scene);
   const controls = initControls();
   const enemies = createEnemies(scene, 10, 8);
   const transition = createTransitionSystem(scene, camera);
