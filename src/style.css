@@ -1,0 +1,16 @@
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* agar tidak ada scrollbar */
+  background: #050010; /* fallback background */
+}
+
+#app {
+  width: 100vw;   /* full viewport width */
+  height: 100vh;  /* full viewport height */
+  display: block; /* hilangkan jarak default inline element */
+}
