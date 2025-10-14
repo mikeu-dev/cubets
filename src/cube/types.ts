@@ -12,7 +12,6 @@ export interface Enemy {
   hasHitPlayer?: boolean; // baru
 }
 
-
 export interface CollisionSystem {
   update: (_playerMesh: THREE.Mesh, _enemies: Enemy[]) => void;
 }

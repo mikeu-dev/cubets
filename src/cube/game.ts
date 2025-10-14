@@ -23,7 +23,8 @@ export function initGameLogic(
   container: HTMLElement,
 ) {
   const player = createPlayer(scene);
-  createEnvironment(scene);
+  const environment = createEnvironment(scene);
+
   const startScreen = createStartScreen(container, scene);
   const controls = initControls();
   const enemies = createEnemies(scene, 10, 8);
@@ -52,6 +53,10 @@ export function initGameLogic(
     if (gameOverSystem.isGameOver) return;
 
     player.update(controls.keys);
+    const bounds = environment.bounds;
+    player.mesh.position.x = Math.max(bounds.minX, Math.min(bounds.maxX, player.mesh.position.x));
+    player.mesh.position.y = Math.max(bounds.minY, Math.min(bounds.maxY, player.mesh.position.y));
+
     const lerpFactor = 0.1;
     camera.position.x += (player.mesh.position.x - camera.position.x) * lerpFactor;
     camera.position.y += (player.mesh.position.y - camera.position.y) * lerpFactor;
