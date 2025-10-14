@@ -1,7 +1,7 @@
 # ⚡ Neon Cube 2D
 
-Game mini berbasis **Three.js** dengan gaya **neon cyberpunk** dan efek *glow* futuristik.  
-Kamu mengendalikan kubus bercahaya dan harus menghindari musuh yang bergerak acak — konsepnya mirip *snake arena* versi 2D.
+Game mini berbasis **Three.js** dengan gaya **neon cyberpunk** dan efek _glow_ futuristik.  
+Kamu mengendalikan kubus bercahaya dan harus menghindari musuh yang bergerak acak — konsepnya mirip _snake arena_ versi 2D.
 
 ---
 
@@ -13,12 +13,12 @@ Kamu mengendalikan kubus bercahaya dan harus menghindari musuh yang bergerak aca
 - ✨ **Sistem skor & level-up**
 - ⚡ **Transisi efek neon** saat naik level
 - 🧩 **Modular Architecture** — komponen terpisah seperti `player`, `enemy`, `collision`, `score`, `transition`, dll.
-- 🧠 **Design Patterns:**  
-  - *Composition Root*  
-  - *Event-Driven Visual Pattern*  
-  - *Observable State Pattern*  
-  - *UI Overlay Pattern*  
-  - *State Gate Pattern*
+- 🧠 **Design Patterns:**
+  - _Composition Root_
+  - _Event-Driven Visual Pattern_
+  - _Observable State Pattern_
+  - _UI Overlay Pattern_
+  - _State Gate Pattern_
 
 ---
 
@@ -28,7 +28,7 @@ Kamu mengendalikan kubus bercahaya dan harus menghindari musuh yang bergerak aca
 src/
 ├── cube/
 │   ├── postprocessing/
-│   │   ├── bloom.ts            # Bloom 
+│   │   ├── bloom.ts            # Bloom
 │   ├── components/
 │   │   ├── player.ts           # Player system
 │   │   ├── enemy.ts            # Enemy spawner + AI
@@ -45,18 +45,22 @@ src/
 │   ├── types.ts                # Definisi tipe global
 │   └── main.ts                 # Entry point untuk render scene
 ```
+
 ---
 
-## 🚀 Instalasi & Menjalankan 
+## 🚀 Instalasi & Menjalankan
 
 # 1️⃣ Clone repo ini
+
 git clone https://github.com/username/neon-cube-2d.git
 cd neon-cube-2d
 
 # 2️⃣ Install dependencies
+
 npm install
 
 # 3️⃣ Jalankan dalam mode dev
+
 npm run dev
 
 Kemudian buka http://localhost:5173 di browser.
@@ -64,6 +68,7 @@ Kemudian buka http://localhost:5173 di browser.
 ---
 
 ## 🕹️ Cara Bermain
+
 | Tombol  | Aksi            |
 | ------- | --------------- |
 | `W`     | Gerak ke atas   |
@@ -83,12 +88,14 @@ Sistem dibangun dengan pendekatan komponen independen yang berkomunikasi lewat C
 Setiap sistem memiliki pattern annotation di bagian atas file agar mudah dipelajari.
 
 Contoh:
+
 ```ts
 /**
  * @module Score
  * @pattern Observable State Pattern + UI Overlay Pattern
  */
 ```
+
 ---
 
 ## 📜 Lisensi

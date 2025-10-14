@@ -18,19 +18,19 @@ export function createStartScreen(container: HTMLElement): StartScreen {
   let started = false;
 
   // 🟩 Elemen overlay utama
-  const overlay = document.createElement("div");
-  overlay.style.position = "absolute";
-  overlay.style.inset = "0";
-  overlay.style.display = "flex";
-  overlay.style.flexDirection = "column";
-  overlay.style.alignItems = "center";
-  overlay.style.justifyContent = "center";
-  overlay.style.background = "rgba(0, 0, 20, 0.85)";
-  overlay.style.backdropFilter = "blur(6px)";
-  overlay.style.color = "#00ffff";
+  const overlay = document.createElement('div');
+  overlay.style.position = 'absolute';
+  overlay.style.inset = '0';
+  overlay.style.display = 'flex';
+  overlay.style.flexDirection = 'column';
+  overlay.style.alignItems = 'center';
+  overlay.style.justifyContent = 'center';
+  overlay.style.background = 'rgba(0, 0, 20, 0.85)';
+  overlay.style.backdropFilter = 'blur(6px)';
+  overlay.style.color = '#00ffff';
   overlay.style.fontFamily = '"Orbitron", sans-serif';
-  overlay.style.textAlign = "center";
-  overlay.style.userSelect = "none";
+  overlay.style.textAlign = 'center';
+  overlay.style.userSelect = 'none';
 
   // 🎮 Konten utama
   overlay.innerHTML = `
@@ -109,20 +109,21 @@ export function createStartScreen(container: HTMLElement): StartScreen {
     </div>
   `;
 
-  container.style.position = "relative";
+  container.style.position = 'relative';
   container.appendChild(overlay);
 
   // 🎹 Input handler
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.code === "Space" && !started) {
+    if (e.code === 'Space' && !started) {
       started = true;
-      overlay.animate(
-        [{ opacity: 1 }, { opacity: 0 }],
-        { duration: 800, easing: "ease-in-out", fill: "forwards" }
-      ).onfinish = () => overlay.remove();
+      overlay.animate([{ opacity: 1 }, { opacity: 0 }], {
+        duration: 800,
+        easing: 'ease-in-out',
+        fill: 'forwards',
+      }).onfinish = () => overlay.remove();
     }
   };
-  window.addEventListener("keydown", handleKeyDown);
+  window.addEventListener('keydown', handleKeyDown);
 
   return {
     get started() {
@@ -132,7 +133,7 @@ export function createStartScreen(container: HTMLElement): StartScreen {
       // (opsional) misalnya nanti untuk efek glow dinamis
     },
     destroy() {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
       overlay.remove();
     },
   };

@@ -8,7 +8,7 @@
  * - Memungkinkan sistem lain (seperti collision) untuk memicu perubahan
  */
 
-import type { ScoreSystem } from "../types";
+import type { ScoreSystem } from '../types';
 
 /**
  * Membuat sistem skor dengan tampilan UI neon glow.
@@ -43,10 +43,10 @@ export function createScoreSystem(container: HTMLElement, onLevelUp?: () => void
     add(points: number) {
       score += points;
       updateDisplay();
-        if (score >= level * 10) {
-      level++;
-      onLevelUp?.(); // 🔥 panggil transisi di sini
-    }
+      if (score >= level * 10) {
+        level++;
+        onLevelUp?.(); // 🔥 panggil transisi di sini
+      }
       // Efek animasi kecil saat skor naik
       scoreEl.animate(
         [

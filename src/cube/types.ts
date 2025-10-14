@@ -9,21 +9,21 @@ export interface Enemy {
   update: () => void;
 }
 export interface CollisionSystem {
-  update: (playerMesh: THREE.Mesh, enemies: Enemy[]) => void;
+  update: (_playerMesh: THREE.Mesh, _enemies: Enemy[]) => void;
 }
 export interface ScoreSystem {
-  add(points: number): void;
+  add(_points: number): void;
   reset(): void;
   getValue(): number;
   destroy(): void;
   onLevelUp?: () => void;
 }
 export interface ParticleSystem {
-  spawn: (position: THREE.Vector3) => void;
+  spawn: (_position: THREE.Vector3) => void;
   update: () => void;
 }
 export interface TrailSystem {
-  update: (position: THREE.Vector3) => void;
+  update: (_position: THREE.Vector3) => void;
 }
 export interface TransitionSystem {
   triggerLevelUp: () => void;
