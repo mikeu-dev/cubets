@@ -58,22 +58,7 @@ export function createStartScreen(container: HTMLElement, scene: THREE.Scene): S
         margin-bottom:40px;
       ">Press <span style="color:#fff;">SPACE</span> to Start</p>
 
-      <div class="wasd-grid" style="
-        display:grid;
-        grid-template-columns:repeat(3,50px);
-        grid-template-rows:repeat(2,50px);
-        gap:10px;
-        justify-content:center;
-        align-items:center;
-        margin:0 auto;
-      ">
-        <div></div>
-        <div class="key">W</div>
-        <div></div>
-        <div class="key">A</div>
-        <div class="key">S</div>
-        <div class="key">D</div>
-      </div>
+      <div style=" display: grid; grid-template-columns: repeat(3, 50px); grid-template-rows: repeat(2, 50px); gap: 10px; justify-content: center; align-items: center; margin: 0 auto; filter: drop-shadow(0 0 10px #00ffff); "> <div></div> <div style=" border: 2px solid #00ffff; border-radius: 8px; color: #00ffff; font-size: 18px; line-height: 46px; font-weight: bold; ">W</div> <div></div> <div style=" border: 2px solid #00ffff; border-radius: 8px; color: #00ffff; font-size: 18px; line-height: 46px; font-weight: bold; ">A</div> <div style=" border: 2px solid #00ffff; border-radius: 8px; color: #00ffff; font-size: 18px; line-height: 46px; font-weight: bold; ">S</div> <div style=" border: 2px solid #00ffff; border-radius: 8px; color: #00ffff; font-size: 18px; line-height: 46px; font-weight: bold; ">D</div> </div>
 
       <p class="hint" style="
         margin-top:25px;
