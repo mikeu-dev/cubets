@@ -8,7 +8,7 @@
  * - Memungkinkan sistem lain untuk memeriksa atau memperbarui high score
  */
 
-import type { HighScoreSystem } from "../types";
+import type { HighScoreSystem } from '../types';
 
 /**
  * Membuat sistem high score dengan UI neon glow.

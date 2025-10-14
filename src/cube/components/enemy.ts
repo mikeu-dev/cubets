@@ -20,7 +20,7 @@ export function createEnemy(scene: THREE.Scene, areaSize = 8, dangerous = false)
   const color = dangerous ? 0xff0000 : 0x9900ff;
   const geometry = dangerous
     ? new THREE.SphereGeometry(0.45, 16, 16) // bola merah berbahaya
-    : new THREE.BoxGeometry(0.6, 0.6, 0.6);  // kubus ungu aman
+    : new THREE.BoxGeometry(0.6, 0.6, 0.6); // kubus ungu aman
 
   const material = new THREE.MeshStandardMaterial({
     color,
@@ -55,7 +55,7 @@ export function createEnemies(scene: THREE.Scene, count = 10, areaSize = 8): Ene
   const dangerousCount = Math.floor(count * 0.3);
 
   for (let i = 0; i < count; i++) {
-    const isDangerous = i < dangerousCount; 
+    const isDangerous = i < dangerousCount;
     enemies.push(createEnemy(scene, areaSize, isDangerous));
   }
 

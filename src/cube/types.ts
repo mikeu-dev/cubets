@@ -48,8 +48,8 @@ export interface StartScreen {
   update(): void;
 }
 export interface HitSystem {
-  takeHit: () => number; 
-  reset: () => void; 
-  hitsRemaining: number; 
-  destroy: () => void; 
+  takeHit: () => number;
+  reset: () => void;
+  hitsRemaining: number;
+  destroy: () => void;
 }
