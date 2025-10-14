@@ -16,6 +16,7 @@ import { createTransitionSystem } from './components/transition';
 import { createGameOverSystem } from './components/gameOver';
 import { createStartScreen } from './components/startScreen';
 import { createHitSystem } from './components/hitSystem';
+import { createHighScoreSystem } from './components/highScore';
 
 export function initGameLogic(
   scene: THREE.Scene,
@@ -31,6 +32,7 @@ export function initGameLogic(
   const transition = createTransitionSystem(scene, camera);
   const gameOverSystem = createGameOverSystem(scene, container);
   const scoreSystem = createScoreSystem(container, () => transition.triggerLevelUp());
+  const highScoreSystem = createHighScoreSystem(container);
   const particles = createParticleSystem(scene, 300);
   const collisionSystem = createCollisionSystem(scene, 0.8, scoreSystem, particles);
   const trail = createTrail(scene, 40);
@@ -38,6 +40,7 @@ export function initGameLogic(
 
   window.addEventListener('gameRestart', () => {
     scoreSystem.reset();
+    highScoreSystem.checkAndUpdate(scoreSystem.getValue());
     player.mesh.position.set(0, 0, 0);
     enemies.forEach((enemy) => {
       enemy.mesh.position.x = (Math.random() - 0.5) * 10;
@@ -77,7 +80,10 @@ export function initGameLogic(
         enemy.hasHitPlayer = true;
         const remaining = hitSystem.takeHit();
 
-        if (remaining <= 0) gameOverSystem.trigger();
+        if (remaining <= 0) {
+          highScoreSystem.checkAndUpdate(scoreSystem.getValue());
+          gameOverSystem.trigger();
+        }
 
         // reset posisi musuh agar tidak langsung menabrak lagi
         enemy.mesh.position.x = (Math.random() - 0.5) * 10;

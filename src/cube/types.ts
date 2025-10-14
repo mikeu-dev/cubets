@@ -22,6 +22,13 @@ export interface ScoreSystem {
   destroy(): void;
   onLevelUp?: () => void;
 }
+export interface HighScoreSystem {
+  reset(): void;
+  getValue(): number;
+  destroy(): void;
+  onLevelUp?: () => void;
+  checkAndUpdate: (_score: number) => void;
+}
 export interface ParticleSystem {
   spawn: (_position: THREE.Vector3) => void;
   update: () => void;
