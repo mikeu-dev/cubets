@@ -15,7 +15,10 @@ import type { TransitionSystem } from '../types';
  * @param scene Scene utama game
  * @param camera Kamera aktif
  */
-export function createTransitionSystem(scene: THREE.Scene, camera: THREE.Camera): TransitionSystem {
+export function createTransitionSystem(
+  scene: THREE.Scene,
+  _camera: THREE.Camera,
+): TransitionSystem {
   // Cahaya flash (sementara)
   const flashLight = new THREE.PointLight(0xffffff, 0, 100);
   scene.add(flashLight);

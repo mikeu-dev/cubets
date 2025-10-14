@@ -16,7 +16,11 @@ import { createTransitionSystem } from './components/transition';
 import { createGameOverSystem } from './components/gameOver';
 import { createStartScreen } from './components/startScreen';
 
-export function initGameLogic(scene: THREE.Scene, camera: THREE.OrthographicCamera, container: HTMLElement) {
+export function initGameLogic(
+  scene: THREE.Scene,
+  camera: THREE.OrthographicCamera,
+  container: HTMLElement,
+) {
   const player = createPlayer(scene);
   createEnvironment(scene);
   const startScreen = createStartScreen(container);
@@ -50,7 +54,7 @@ export function initGameLogic(scene: THREE.Scene, camera: THREE.OrthographicCame
     enemies.forEach((enemy) => enemy.update());
     collisionSystem.update(player.mesh, enemies);
 
-     for (const enemy of enemies) {
+    for (const enemy of enemies) {
       const dist = player.mesh.position.distanceTo(enemy.mesh.position);
       if (dist < 0.5) {
         gameOverSystem.trigger();

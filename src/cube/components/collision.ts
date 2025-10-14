@@ -22,7 +22,7 @@ export function createCollisionSystem(
   scene: THREE.Scene,
   radius = 0.6,
   scoreSystem?: ScoreSystem,
-  particles?: ParticleSystem // partikel opsional
+  particles?: ParticleSystem, // partikel opsional
 ): CollisionSystem {
   return {
     update(playerMesh, enemies) {
@@ -44,31 +44,4 @@ export function createCollisionSystem(
       }
     },
   };
-}
-
-/**
- * Efek singkat saat collision (seperti "ledakan neon").
- *
- * @param {THREE.Scene} scene
- * @param {THREE.Vector3} position
- */
-function spawnNeonFlash(scene: THREE.Scene, position: THREE.Vector3) {
-  const flash = new THREE.Mesh(
-    new THREE.SphereGeometry(0.3, 8, 8),
-    new THREE.MeshBasicMaterial({ color: 0x00ffff })
-  );
-  flash.position.copy(position);
-  scene.add(flash);
-
-  // Efek menghilang pelan-pelan
-  let alpha = 1;
-  const fade = () => {
-    alpha -= 0.05;
-    flash.material.opacity = alpha;
-    (flash.material as THREE.Material).transparent = true;
-    flash.scale.multiplyScalar(1.05);
-    if (alpha > 0) requestAnimationFrame(fade);
-    else scene.remove(flash);
-  };
-  fade();
 }

@@ -1,6 +1,5 @@
-
-
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -10,7 +9,7 @@ html, body {
 }
 
 #app {
-  width: 100vw;   /* full viewport width */
-  height: 100vh;  /* full viewport height */
+  width: 100vw; /* full viewport width */
+  height: 100vh; /* full viewport height */
   display: block; /* hilangkan jarak default inline element */
 }

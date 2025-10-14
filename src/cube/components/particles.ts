@@ -59,11 +59,7 @@ export function createParticleSystem(scene: THREE.Scene, poolSize = 200): Partic
       colors[idx * 3 + 2] = color.b;
 
       // Kecepatan acak
-      velocities[idx].set(
-        (Math.random() - 0.5) * 0.5,
-        (Math.random() - 0.5) * 0.5,
-        0
-      );
+      velocities[idx].set((Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.5, 0);
 
       // Umur partikel
       lifetimes[idx] = 1.0;

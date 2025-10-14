@@ -7,7 +7,7 @@ export function createBloomComposer(
   renderer: THREE.WebGLRenderer,
   scene: THREE.Scene,
   camera: THREE.Camera,
-  container: HTMLElement
+  container: HTMLElement,
 ) {
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
@@ -16,7 +16,7 @@ export function createBloomComposer(
     new THREE.Vector2(container.clientWidth, container.clientHeight),
     2.5,
     1.0,
-    0.0
+    0.0,
   );
   composer.addPass(bloom);
 
