@@ -52,6 +52,10 @@ export function initGameLogic(
     if (gameOverSystem.isGameOver) return;
 
     player.update(controls.keys);
+    const lerpFactor = 0.1;
+    camera.position.x += (player.mesh.position.x - camera.position.x) * lerpFactor;
+    camera.position.y += (player.mesh.position.y - camera.position.y) * lerpFactor;
+    camera.updateProjectionMatrix();
     particles.update();
     trail.update(player.mesh.position);
     enemies.forEach((enemy) => enemy.update());
