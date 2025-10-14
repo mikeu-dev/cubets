@@ -7,7 +7,11 @@ export interface GameOptions {
 export interface Enemy {
   mesh: THREE.Mesh;
   update: () => void;
+  dangerous: boolean;
+  lastHitTime?: number;
+  hasHitPlayer?: boolean; // baru
 }
+
 export interface CollisionSystem {
   update: (_playerMesh: THREE.Mesh, _enemies: Enemy[]) => void;
 }
@@ -17,6 +21,13 @@ export interface ScoreSystem {
   getValue(): number;
   destroy(): void;
   onLevelUp?: () => void;
+}
+export interface HighScoreSystem {
+  reset(): void;
+  getValue(): number;
+  destroy(): void;
+  onLevelUp?: () => void;
+  checkAndUpdate: (_score: number) => void;
 }
 export interface ParticleSystem {
   spawn: (_position: THREE.Vector3) => void;
@@ -35,4 +46,10 @@ export interface StartScreen {
   destroy(): void;
   /** Update loop — opsional, misalnya untuk efek animasi overlay */
   update(): void;
+}
+export interface HitSystem {
+  takeHit: () => number;
+  reset: () => void;
+  hitsRemaining: number;
+  destroy: () => void;
 }
