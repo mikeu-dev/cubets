@@ -2,7 +2,9 @@ import * as THREE from 'three';
 import { initGameLogic } from './game';
 import { createBloomComposer } from './postprocessing/bloom';
 
-export function initNeonCube(container: HTMLElement) {
+import { MultiplayerService } from '../services/MultiplayerService';
+
+export function initNeonCube(container: HTMLElement, multiplayer?: MultiplayerService) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000010);
 
@@ -14,7 +16,7 @@ export function initNeonCube(container: HTMLElement) {
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
 
-  const game = initGameLogic(scene, camera, container);
+  const game = initGameLogic(scene, camera, container, multiplayer);
   const composer = createBloomComposer(renderer, scene, camera, container);
 
   function animate() {

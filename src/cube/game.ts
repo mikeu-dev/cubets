@@ -18,10 +18,14 @@ import { createStartScreen } from './components/startScreen';
 import { createHitSystem } from './components/hitSystem';
 import { createHighScoreSystem } from './components/highScore';
 
+import { MultiplayerService } from '../services/MultiplayerService';
+import { createRemotePlayerManager } from './components/remotePlayers';
+
 export function initGameLogic(
   scene: THREE.Scene,
   camera: THREE.OrthographicCamera,
   container: HTMLElement,
+  multiplayer?: MultiplayerService
 ) {
   const player = createPlayer(scene);
   const environment = createEnvironment(scene);
@@ -38,6 +42,15 @@ export function initGameLogic(
   const trail = createTrail(scene, 40);
   const hitSystem = createHitSystem(container, 3); // max 3 hits
 
+  // Remote Players
+  const remotePlayers = createRemotePlayerManager(scene);
+
+  if (multiplayer) {
+    multiplayer.onReceiveState((state: any) => {
+      remotePlayers.updatePlayer(state.playerId, state.x, state.y);
+    });
+  }
+
   window.addEventListener('gameRestart', () => {
     scoreSystem.reset();
     highScoreSystem.checkAndUpdate(scoreSystem.getValue());
@@ -51,6 +64,9 @@ export function initGameLogic(
     gameOverSystem.reset();
   });
 
+  let lastSentTime = 0;
+  const sendInterval = 50; // ms (20 updates/sec)
+
   function update() {
     if (!startScreen.started) return;
     if (gameOverSystem.isGameOver) return;
@@ -59,6 +75,20 @@ export function initGameLogic(
     const bounds = environment.bounds;
     player.mesh.position.x = Math.max(bounds.minX, Math.min(bounds.maxX, player.mesh.position.x));
     player.mesh.position.y = Math.max(bounds.minY, Math.min(bounds.maxY, player.mesh.position.y));
+
+    // Multiplayer Send
+    if (multiplayer) {
+      const now = Date.now();
+      if (now - lastSentTime > sendInterval) {
+        multiplayer.sendState({
+          x: player.mesh.position.x,
+          y: player.mesh.position.y,
+          score: scoreSystem.getValue(),
+          lives: hitSystem.hitsRemaining
+        });
+        lastSentTime = now;
+      }
+    }
 
     const lerpFactor = 0.1;
     camera.position.x += (player.mesh.position.x - camera.position.x) * lerpFactor;
