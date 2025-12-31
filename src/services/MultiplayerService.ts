@@ -42,6 +42,8 @@ export class MultiplayerService {
             // Ignore our own updates to prevent jitter/loops
             if (state.playerId === this.playerId) return;
 
+            console.log(`[SignalR] Received update from Player ${state.playerId}:`, state);
+
             if (this.stateReceivedCallback) {
                 this.stateReceivedCallback(state);
             }
